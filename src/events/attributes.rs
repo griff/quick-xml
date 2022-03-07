@@ -61,6 +61,16 @@ impl<'a> Attributes<'a> {
         self.with_checks = val;
         self
     }
+
+    /// Get position.
+    pub fn position(&self) -> usize {
+        self.position
+    }
+
+    /// Set position.
+    pub fn set_position(&mut self, position: usize) {
+        self.position = position
+    }
 }
 
 /// A struct representing a key/value XML attribute.
