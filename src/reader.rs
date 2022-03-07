@@ -1584,16 +1584,19 @@ pub struct Decoder {
 }
 
 impl Decoder {
+    /// Decode UTF-8 str from byte slice
     #[cfg(not(feature = "encoding"))]
     pub fn decode<'c>(&self, bytes: &'c [u8]) -> Result<&'c str> {
         from_utf8(bytes).map_err(Error::Utf8)
     }
 
+    /// Decode UTF-8 String from Vec<u8>
     #[cfg(not(feature = "encoding"))]
     pub fn decode_owned<'c>(&self, bytes: Vec<u8>) -> Result<String> {
         String::from_utf8(bytes).map_err(|e| Error::Utf8(e.utf8_error()))
     }
 
+    /// Decode UTF-8 str from byte slice
     #[cfg(feature = "encoding")]
     pub fn decode<'c>(&self, bytes: &'c [u8]) -> Cow<'c, str> {
         self.encoding.decode(bytes).0
