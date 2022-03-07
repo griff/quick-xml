@@ -609,7 +609,7 @@ impl<'a> BytesText<'a> {
     /// Extracts the inner `Cow` from the `BytesText` event container.
     #[cfg(feature = "serialize")]
     #[inline]
-    pub(crate) fn into_inner(self) -> Cow<'a, [u8]> {
+    pub fn into_inner(self) -> Cow<'a, [u8]> {
         self.content
     }
 
