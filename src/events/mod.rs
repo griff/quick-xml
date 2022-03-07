@@ -650,7 +650,7 @@ impl<'a> BytesText<'a> {
 
     /// Gets content of this text buffer in the specified encoding
     #[cfg(feature = "serialize")]
-    pub(crate) fn decode(&self, decoder: crate::reader::Decoder) -> Result<Cow<'a, str>> {
+    pub fn decode(&self, decoder: crate::reader::Decoder) -> Result<Cow<'a, str>> {
         Ok(match &self.content {
             Cow::Borrowed(bytes) => {
                 #[cfg(feature = "encoding")]
@@ -675,7 +675,7 @@ impl<'a> BytesText<'a> {
     }
 
     #[cfg(feature = "serialize")]
-    pub(crate) fn decode_and_escape(
+    pub fn decode_and_escape(
         &self,
         decoder: crate::reader::Decoder,
     ) -> Result<Cow<'a, str>> {
